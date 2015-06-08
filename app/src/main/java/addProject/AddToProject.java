@@ -92,6 +92,7 @@ public class AddToProject extends AppCompatActivity implements TextWatcher {
                         return false;
                     }
                 });
+        
         textView.setImeOptions(EditorInfo.IME_ACTION_DONE);
     }
 
