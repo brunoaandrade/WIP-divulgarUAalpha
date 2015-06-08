@@ -26,29 +26,8 @@
     <string name="title_activity_login_ua">LoginUAActivity</string>
     <string name="title_activity_details">DetailsActivity</string>
 
-
-    <string-array name="image_ids">
-        <item>@drawable/image_1</item>
-        <item>@drawable/image_2</item>
-        <item>@drawable/image_3</item>
-        <item>@drawable/image_4</item>
-        <item>@drawable/image_5</item>
-        <item>@drawable/image_6</item>
-        <item>@drawable/image_7</item>
-        <item>@drawable/image_8</item>
-        <item>@drawable/image_9</item>
-        <item>@drawable/image_1</item>
-        <item>@drawable/image_2</item>
-        <item>@drawable/image_3</item>
-        <item>@drawable/image_4</item>
-        <item>@drawable/image_5</item>
-        <item>@drawable/image_6</item>
-        <item>@drawable/image_7</item>
-        <item>@drawable/image_8</item>
-        <item>@drawable/image_9</item>
-    </string-array>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="title_activity_help">HelpActivity</string>
+    <string name="title_activity_about">Acerca de</string>
+    <string name="title_activity_help">Ajuda</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
 	
 	
