@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="deti.ua.divulgarua" >
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name" >
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider1577820345803300"
+            android:exported="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".DetailsActivity"
+            android:label="@string/title_activity_details"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".SearchResultsActivity"
+            android:label="@string/title_activity_search_results"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="addProject.LoadProjectCamera"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_load_project"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+        </activity>
+        <activity
+            android:name="addProject.PhotoEdit"
+            android:configChanges="orientation|keyboardHidden|screenSize|keyboard|screenLayout|"
+            android:label="@string/title_activity_foto_edit"
+            android:theme="@style/themeEditar" >
+        </activity>
+        <activity
+            android:name="addProject.PhotoFilter"
+            android:configChanges="orientation|keyboardHidden|screenSize|keyboard|screenLayout|"
+            android:label="@string/title_activity_foto_filter"
+            android:theme="@style/themeEditar" >
+        </activity>
+        <activity
+            android:name="addProject.AddToProject"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_add_to_project"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+        </activity>
+        <activity
+            android:name="addProject.APartilharProjecto"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_partilhar"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="login.OauthActivity"
+            android:label="@string/title_activity_oauth" >
+        </activity>
+        <activity
+            android:name=".ActivateAccountActivity"
+            android:label="@string/title_activity_activate_account"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+        </activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:label="@string/title_activity_edit_profile"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" >
+        </activity>
+        <activity
+            android:name=".splashScreen"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="addProject.ServiceUploadPhoto"
+            android:exported="false" >
+        </service>
+    </application>
+
+</manifest>

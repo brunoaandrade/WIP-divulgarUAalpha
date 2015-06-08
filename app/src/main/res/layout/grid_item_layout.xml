@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <deti.ua.divulgarua.SquareImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="16dp"
+        android:layout_gravity="bottom"
+        android:textColor="#ff4b4b4b"
+        android:background="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:text="projecto 1" />
+
+    <TextView
+        android:id="@+id/subtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="4dp"
+        android:layout_gravity="bottom"
+        android:textColor="#ffb0b0b0"
+        android:textSize="10sp"
+        android:text="text" />
+
+
+
+</FrameLayout>

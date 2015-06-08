@@ -1,0 +1,77 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/material_drawer_primary"
+        android:elevation="0dp"/>
+
+    <!-- As the options_menu content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+    <FrameLayout
+        android:layout_below="@id/toolbar"
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:layout_alignParentTop="true">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton5"
+                android:layout_gravity="left|top"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/red_scrubber_control_pressed_holo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="Neuza Fonte"
+                android:id="@+id/textView2"
+                android:layout_gravity="left|top"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="90dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:text="Aluno, categoria"
+                android:id="@+id/textView3"
+                android:layout_gravity="right|top"
+                android:layout_alignBottom="@+id/imageButton5"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="498dp"
+            android:id="@+id/projectList"
+            android:nestedScrollingEnabled="true"
+            android:baselineAligned="false"
+            android:gravity="bottom|center_horizontal"></LinearLayout>
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>

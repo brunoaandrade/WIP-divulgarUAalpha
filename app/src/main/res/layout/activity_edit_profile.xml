@@ -1,0 +1,182 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/material_drawer_primary"
+        android:elevation="0dp"/>
+
+    <!-- As the options_menu content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+    <FrameLayout
+        android:layout_below="@id/toolbar"
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:id="@+id/profilePicture"
+            android:background="@drawable/profile6"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="20dp" />
+
+
+        <FrameLayout
+            android:layout_below="@id/profilePicture"
+            android:id="@+id/frame_container2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top">
+
+
+            <EditText
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editName"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="30dp"
+                android:hint="  Nome"
+                android:layout_marginBottom="75dp" />
+
+            <TextView
+                android:layout_width="330dp"
+                android:layout_height="36dp"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editStudys"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="30dp"
+                android:hint="  Curso"
+                android:layout_marginBottom="15dp"
+                android:maxLines="2"
+                android:text="dwd" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edtYear"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="30dp"
+                android:hint="  Ano"
+                android:layout_marginBottom="-45dp"
+                android:text="ww" />
+
+            <EditText
+                android:layout_width="328dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editTag"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="30dp"
+                android:hint="  Interesses" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Interesses"
+                android:id="@+id/textView6"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="35dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="328dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editLocation"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="30dp"
+                android:hint="  Localidade"
+                android:layout_marginBottom="65dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Localidade"
+                android:id="@+id/textView7"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="100dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editAge"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="30dp"
+                android:hint="  idade"
+                android:layout_marginBottom="125dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Idade"
+                android:id="@+id/textView8"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="160dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Nome"
+                android:id="@+id/textView9"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="30dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="100dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Curso"
+                android:id="@+id/textView10"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="30dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="40dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Ano"
+                android:id="@+id/editYear"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="30dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="225dp" />
+
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>

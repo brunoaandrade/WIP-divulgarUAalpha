@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+
+    <FrameLayout
+        android:layout_below="@id/toolbar"
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"       />
+
+        <LinearLayout
+            android:id="@+id/graph_fragment_holder"
+            android:background="@color/balck80"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:id="@+id/imageButton4"
+                android:background="@drawable/ic_action_cropping1"
+                android:layout_gravity="center_vertical"
+                />
+
+            <View android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:id="@+id/imageButton2"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_action_circular229"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:id="@+id/imageButton"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_action_brilho"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:id="@+id/imageButton3"
+                android:background="@drawable/ic_action_contrast6"
+                android:layout_gravity="center_vertical"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/acepetCancel"
+            android:background="@color/balck80"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="60dp"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_above="@id/graph_fragment_holder"
+            >
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/buttonCancel"
+                android:background="@drawable/cancel"
+                android:layout_gravity="center_horizontal|center_vertical"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/buttonAcepet"
+                android:background="@drawable/checkmark"
+                android:layout_gravity="center_horizontal|center_vertical"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rotateImage"
+            android:background="@color/balck80"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true">
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/rotateHalf"
+                android:background="@drawable/rotate_inv"
+                android:layout_gravity="center_vertical"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/rotateVertical"
+                android:background="@drawable/rotate_vertical1"
+                android:layout_gravity="center_vertical"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/rotateHorizontal"
+                android:background="@drawable/rotate_horizontal"
+                android:layout_gravity="center_vertical"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/barValue"
+            android:background="@color/balck80"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true">
+            <SeekBar
+                android:id="@+id/seek1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:progress="0"
+                android:secondaryProgress="0"
+                android:layout_gravity="center_vertical"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/red_scrubber_progress"
+                android:thumb="@drawable/red_scrubber_control"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>
+

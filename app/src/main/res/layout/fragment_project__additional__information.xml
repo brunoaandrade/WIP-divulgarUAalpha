@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.floatingactionbuttonbasic.Project_Additional_Information">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/view" />
+    <Spinner
+        android:hint="Selecionar Disciplina"
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/view1"
+        android:layout_above="@+id/view5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_above="@+id/editText2"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view5" />
+
+
+    <EditText
+        android:hint="Escrever uma descrição do projecto"
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_below="@+id/spinner"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:imeOptions="actionDone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/view3"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/view4"
+        android:layout_below="@+id/view3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="fill_parent" android:text="- None Selected -"
+        android:id="@+id/select_colours" android:padding="5dip"
+        android:textAlignment="center"
+        android:layout_below="@+id/view3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:id="@+id/view6"
+        android:layout_below="@+id/select_colours"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

@@ -1,0 +1,78 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <android.webkit.WebView android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.webkit.WebView>
+
+        <FrameLayout
+            android:layout_below="@id/webView"
+            android:id="@+id/frame_pin"
+            android:layout_width="match_parent"
+            android:layout_height="484dp"
+            android:layout_gravity="bottom|center"
+            android:background="@color/ColorPrimary"
+            android:visibility="invisible">
+
+            <FrameLayout
+                android:id="@+id/frame_container2"
+                android:layout_width="286dp"
+                android:layout_height="122dp"
+                android:layout_gravity="top|center"
+                android:background="#ffffffff"
+                android:layout_marginTop="50dp">
+
+                <EditText
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/txtPIN"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:background="#ffeaeaea"
+                    android:autoText="false"
+                    android:minHeight="40dp"
+                    android:textColor="#ff808080"
+                    android:numeric="integer"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Insira o código"
+                    android:id="@+id/textView5"
+                    android:layout_gravity="center_horizontal|top"
+                    android:textColor="#DE000000"
+                    android:layout_marginTop="5dp" />
+
+
+            </FrameLayout>
+
+            <Button
+
+                android:layout_width="285dp"
+                android:layout_height="wrap_content"
+                android:text="Confirmar"
+                android:id="@+id/btn_confirm"
+                android:layout_gravity="top|center_horizontal"
+                android:background="#ffffffff"
+                android:textColor="@color/ColorPrimary"
+                android:layout_marginTop="175dp" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+    </RelativeLayout>

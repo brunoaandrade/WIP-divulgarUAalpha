@@ -1,0 +1,98 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/material_drawer_primary"
+        android:elevation="0dp"/>
+
+
+
+    <FrameLayout
+        android:layout_below="@id/toolbar"
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!-- Header aligned to top -->
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/material_drawer_primary"
+           >
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:id="@+id/profImgAct"
+                android:src="@drawable/button_action"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:minHeight="50dp"
+                android:minWidth="120dp"
+                android:scaleType="fitXY"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Luis Afonso"
+                android:id="@+id/profile_name"
+                android:layout_below="@+id/profImgAct"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/profile_yearStudies"
+                android:layout_below="@+id/profile_name"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffffff" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfile"
+                android:src="@drawable/ic_action_note35"
+                android:background="#ffffffff"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="16px"
+                android:layout_marginBottom="10dp" />
+
+        </RelativeLayout>
+
+
+    </FrameLayout>
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:numColumns="2"
+        android:layout_marginLeft="16px"
+        android:layout_marginRight="16px"
+        android:layout_marginTop="220dp" />
+
+
+
+</RelativeLayout>

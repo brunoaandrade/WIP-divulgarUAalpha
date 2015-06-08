@@ -1,0 +1,196 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.floatingactionbuttonbasic.AddToProject"
+    android:fitsSystemWindows="true">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/material_drawer_primary"
+        android:elevation="0dp" />
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/projectos_list"
+                android:textSize="28dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="left"
+                android:textColor="#413939"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/llFragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/projectos_list"
+                android:orientation="vertical"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearleayouts"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/llFragmentContainer"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="20dp">
+
+                <org.askerov.dynamicgrid.DynamicGridView
+                    android:id="@+id/dynamic_grid"
+                    android:layout_height="249dp"
+                    android:layout_width="match_parent"
+                    android:numColumns="1"
+
+                    />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/morePhotos"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/ic_mais"
+                android:layout_below="@+id/linearleayouts"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"
+                android:layout_below="@+id/morePhotos"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line"
+                android:layout_marginTop="15dp"
+                android:text="Partilhar :"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+            <Button
+                android:id="@+id/imageButtonInsta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_instagram"
+                android:textAllCaps="false"
+                android:text=" Instagram"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@null"
+                android:layout_below="@+id/fb_share_button"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="25dp" />
+
+
+            <Button
+                android:id="@+id/flirck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Flickr"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_action_flickr"
+                android:textAllCaps="false"
+                android:background="@null"
+                android:layout_below="@+id/twitter"
+                android:layout_alignLeft="@+id/twitter"
+                android:layout_alignStart="@+id/twitter" />
+
+            <Button
+                android:id="@+id/twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_twitter"
+                android:textAllCaps="false"
+                android:text=" Twitter"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@null"
+                android:layout_alignTop="@+id/imageButtonInsta"
+                android:layout_alignLeft="@+id/tumbler"
+                android:layout_alignStart="@+id/tumbler" />
+
+            <Button
+                android:id="@+id/tumbler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_tumblr"
+                android:textAllCaps="false"
+                android:text=" Tumblr"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@null"
+                android:layout_above="@+id/twitter"
+                android:layout_toRightOf="@+id/lineVertical"
+                android:layout_toEndOf="@+id/lineVertical"
+                android:layout_marginLeft="28dp"
+                android:layout_marginStart="28dp" />
+
+
+            <com.facebook.share.widget.ShareButton
+                android:id="@+id/fb_share_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/ic_action_facebook"
+                android:text="Facebook"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                android:background="#1FFFFFFF"
+                android:layout_below="@+id/textView4"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <View
+                android:id="@+id/lineVertical"
+                android:layout_width="1dp"
+                android:layout_height="140dp"
+                android:background="@android:color/darker_gray"
+                android:layout_alignTop="@+id/tumbler"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
