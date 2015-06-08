@@ -72,7 +72,7 @@ public class AddToProject extends AppCompatActivity implements TextWatcher {
     }
 
     private void makeAutoCompleteView() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Projectos);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Projectos);
         textView = (AutoCompleteTextView) findViewById(R.id.projectos_list);
         textView.setAdapter(adapter);
         textView.addTextChangedListener(this);
@@ -111,7 +111,6 @@ public class AddToProject extends AppCompatActivity implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
         projectName = s.toString();
-
     }
 
     private void onDoneAction(TextView v) {
@@ -166,13 +165,13 @@ public class AddToProject extends AppCompatActivity implements TextWatcher {
             onDoneAction(tv);
             return;
         }
-        if(disciplina=="Selecionar Disciplina")
+        if(disciplina.equals("Selecionar Disciplina"))
         {
 
             Toast.makeText(getApplicationContext(), "Tem de Selecionar uma disciplina",Toast.LENGTH_LONG).show();
             return;
         }
-        if(projectName=="")
+        if(projectName.equals(""))
         {
             Toast.makeText(getApplicationContext(), "Tem de Escolher um Nome para o Projecto",Toast.LENGTH_LONG).show();
             return;
@@ -255,10 +254,10 @@ public class AddToProject extends AppCompatActivity implements TextWatcher {
         protected List<Project> doInBackground(User... user) {
             Gson gson = new GsonBuilder().create();
             String message = gson.toJson(user);
-            message = message.toString().substring(1,message.toString().length()-1);
+            message = message.substring(1,message.length()-1);
 
             URL url;
-            HttpURLConnection urlConnection = null;
+            HttpURLConnection urlConnection;
             try {
                 StringBuilder output = new StringBuilder();
                 url = new URL("http://192.168.160.32:8080/cmAndroid/webresources/generic");
