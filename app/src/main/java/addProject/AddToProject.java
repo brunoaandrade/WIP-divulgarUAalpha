@@ -92,7 +92,7 @@ public class AddToProject extends AppCompatActivity implements TextWatcher {
                         return false;
                     }
                 });
-        
+
         textView.setImeOptions(EditorInfo.IME_ACTION_DONE);
     }
 
@@ -300,8 +300,6 @@ public class AddToProject extends AppCompatActivity implements TextWatcher {
         }
 
         protected void onPostExecute(List<Project> feed) {
-            // TODO: check this.exception
-            // TODO: do something with the feed
             myMethod(feed);
         }
     }
