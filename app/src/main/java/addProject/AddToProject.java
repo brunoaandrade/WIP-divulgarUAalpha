@@ -222,12 +222,13 @@ public class AddToProject extends AppCompatActivity implements TextWatcher {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_add_to_project, menu);
+        inf later.inflate(R.menu.menu_add_to_project, menu);
         menu.findItem(R.id.nextBut).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.nextBut:
