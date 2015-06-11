@@ -49,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
     ImageButton imageButton;
     private GridView gridView;
     private GridViewAdapter gridAdapter;
-    static List<Project> lista = new ArrayList<Project>();
+    static List<Project> lista = new ArrayList<>();
     static int nmec;
 
     @Override
@@ -81,7 +81,9 @@ public class ProfileActivity extends AppCompatActivity {
             Log.i("E", sp.getString("NMec","Not Found"));
             nmec = Integer.parseInt(sp.getString("NMec", "-1"));
 
-            getSupportActionBar().setTitle(fullname);
+            if(fullname != null) {
+                getSupportActionBar().setTitle(fullname);
+            }
 
         }
 
@@ -139,11 +141,13 @@ public class ProfileActivity extends AppCompatActivity {
                 ImageItem item = (ImageItem) parent.getItemAtPosition(position);
                 //Create intent
                 Intent intent = new Intent(ProfileActivity.this, DetailsActivity.class);
+                intent.putExtra("projID", item.getProjectID());
                 intent.putExtra("title", item.getTitle());
-                intent.putExtra("image", item.getImage());
-                intent.putExtra("date", item.getDate());
-                intent.putExtra("views", item.getViews());
                 intent.putExtra("user", item.getUser());
+                intent.putExtra("cat", item.getProjectCat());
+                intent.putExtra("descrp", item.getProjectDescrp());
+                intent.putExtra("views", item.getViews());
+
 
                 //Start details activity
                 startActivity(intent);
@@ -194,7 +198,7 @@ public class ProfileActivity extends AppCompatActivity {
             byte[] decodedString = Base64.decode(proj.getCapeImage(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),proj.getAuthorName(),proj.getProjectID()));
+            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),String.valueOf(proj.getOwnerID()),proj.getProjectID(),proj.getCourseName(),proj.getDescription()));
         }
         return imageItems;
     }
@@ -213,7 +217,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().create();
 
                 URL url;
-                HttpURLConnection urlConnection = null;
+                HttpURLConnection urlConnection;
 
                 String message = gson.toJson(user);
 

@@ -14,8 +14,10 @@ public class ImageItem {
     private int views;
     private String user;
     private int projectID;
+    private String projectCat;
+    private String projectDescrp;
 
-    public ImageItem(Bitmap image, String title, Date date, int views, String user, int projectID) {
+    public ImageItem(Bitmap image, String title, Date date, int views, String user, int projectID, String projectCat, String projectDescrp) {
         super();
         this.image = image;
         this.title = title;
@@ -23,6 +25,24 @@ public class ImageItem {
         this.views = views;
         this.user = user;
         this.projectID = projectID;
+        this.projectCat = projectCat;
+        this.projectDescrp = projectDescrp;
+    }
+
+    public String getProjectDescrp() {
+        return projectDescrp;
+    }
+
+    public void setProjectDescrp(String projectDescrp) {
+        this.projectDescrp = projectDescrp;
+    }
+
+    public String getProjectCat() {
+        return projectCat;
+    }
+
+    public void setProjectCat(String projectCat) {
+        this.projectCat = projectCat;
     }
 
     public int getProjectID() {

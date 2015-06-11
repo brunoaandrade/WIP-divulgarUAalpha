@@ -17,7 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,7 +45,7 @@ import webentities.Project;
 public class DetailsActivity extends AppCompatActivity {
     String projectName="";
     static int projectID;
-    static List<Image> lista = new ArrayList<Image>();
+    static List<Image> lista = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,10 @@ public class DetailsActivity extends AppCompatActivity {
 
         projectID = getIntent().getIntExtra("projID", -1);
         String title = getIntent().getStringExtra("title");
+        String user = getIntent().getStringExtra("user");
+        String categoria = getIntent().getStringExtra("cat");
+        String descrip = getIntent().getStringExtra("descrp");
+        String views = getIntent().getStringExtra("views");
 
         try {
             getInfoProject();
@@ -68,28 +73,61 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
 
-        /*TextView titleTextView = (TextView) findViewById(R.id.title);
-        titleTextView.setText(title);*/
+        TextView userTextView = (TextView) findViewById(R.id.userNameProj);
+        userTextView.setText(user);
+
+        TextView cat = (TextView) findViewById(R.id.categoria);
+        cat.setText(categoria);
+
+        TextView nnviews = (TextView) findViewById(R.id.nViewsProj);
+        nnviews.setText(views);
 
 
 
+
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.gallery_layout);
+        TextView description = new TextView(this);
+        description.setText(descrip);
+
+        layout.addView(description);
+
+        ImageView[] iv_album = new ImageView[lista.size()];
+        TextView[] tv_album = new TextView[lista.size()];
         for (int i = 0; i < lista.size(); i++) {
             Image img = lista.get(i);
             Log.i("IMAGE", img.getImageData());
             byte[] decodedString = Base64.decode(img.getImageData(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-            ImageView iv = new ImageView(this);
-            iv.setImageBitmap(bitmap);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-            LinearLayout layout = (LinearLayout)findViewById(R.id.projectList);
-            layout.addView(iv);
+            RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+            iv_album[i] = new ImageView(this);
+            iv_album[i].setImageBitmap(bitmap);
+            iv_album[i].setId(i + 1);
+            iv_album[i].setAdjustViewBounds(true);
+            params2.topMargin = 5;
+
+            tv_album[i] = new TextView(this);
+            tv_album[i].setText(img.getDescription());
+            tv_album[i].setId(i + 2);
+            params.topMargin = 10;
+
+
+            if (i > 0) {
+                params2.addRule(RelativeLayout.BELOW, tv_album[i - 1].getId());
+                iv_album[i].setId(tv_album[i - 1].getId()+1);
+                tv_album[i].setId(tv_album[i - 1].getId() + 2);
+            }
+            params.addRule(RelativeLayout.BELOW, iv_album[i].getId());
+
+            layout.addView(iv_album[i],params2);
+            layout.addView(tv_album[i],params);
+
         }
-
-
-
-
-
 
 
 
@@ -120,7 +158,7 @@ public class DetailsActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().create();
 
                 URL url;
-                HttpURLConnection urlConnection = null;
+                HttpURLConnection urlConnection;
 
                 String message = gson.toJson(proj);
 
@@ -185,7 +223,7 @@ public class DetailsActivity extends AppCompatActivity {
                 }
                 return null;
             }
-        }).execute().get(3000, TimeUnit.MILLISECONDS);
+        }).execute().get(7000, TimeUnit.MILLISECONDS);
 
 
 

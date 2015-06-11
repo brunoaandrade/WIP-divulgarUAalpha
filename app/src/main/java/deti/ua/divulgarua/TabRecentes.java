@@ -67,6 +67,12 @@ public class TabRecentes extends Fragment{
                 Intent intent = new Intent(getActivity(), DetailsActivity.class);
                 intent.putExtra("projID", item.getProjectID());
                 intent.putExtra("title", item.getTitle());
+                intent.putExtra("user", item.getUser());
+                intent.putExtra("cat", item.getProjectCat());
+                intent.putExtra("descrp", item.getProjectDescrp());
+                intent.putExtra("views", item.getViews());
+
+
 
                 //Start details activity
                 startActivity(intent);
@@ -91,7 +97,7 @@ public class TabRecentes extends Fragment{
             byte[] decodedString = Base64.decode(proj.getCapeImage(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),proj.getAuthorName(),proj.getProjectID()));
+            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),String.valueOf(proj.getOwnerID()),proj.getProjectID(),proj.getCourseName(),proj.getDescription()));
         }
         return imageItems;
     }
@@ -99,82 +105,82 @@ public class TabRecentes extends Fragment{
     private void getListProjects () throws Exception {
 
 
-                (new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... params) {
-                        Log.i("SendAnswer", "Estou aqui pah");
-                        RequestListProjects list = new RequestListProjects(ProjectOrderType.DATE, "");
+        (new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                Log.i("SendAnswer", "Estou aqui pah");
+                RequestListProjects list = new RequestListProjects(ProjectOrderType.DATE, "");
 
 
-                        Gson gson = new GsonBuilder().create();
+                Gson gson = new GsonBuilder().create();
 
-                        URL url;
-                        HttpURLConnection urlConnection = null;
+                URL url;
+                HttpURLConnection urlConnection = null;
 
-                        String message = gson.toJson(list);
+                String message = gson.toJson(list);
 
-                        Log.i("SendAnswer", message);
+                Log.i("SendAnswer", message);
 
-                        try {
+                try {
 
-                            StringBuilder output = new StringBuilder();
+                    StringBuilder output = new StringBuilder();
 
-                            url = new URL("http://192.168.160.32:8080/cmAndroid/webresources/sendProjectBy");
+                    url = new URL("http://192.168.160.32:8080/cmAndroid/webresources/sendProjectBy");
 
-                            urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection = (HttpURLConnection) url.openConnection();
 
-                            urlConnection.setDoOutput(true);
-                            urlConnection.setDoInput(true);
-                            urlConnection.setConnectTimeout(20000);
-                            urlConnection.setRequestMethod("GET");
-                            urlConnection.setRequestProperty("Content-Type", "application/json");
-                            urlConnection.setRequestProperty("charset", "utf-8");
-                            //urlConnection.setRequestProperty("Content-Length", "" + Integer.toString(message.getBytes().length));
+                    urlConnection.setDoOutput(true);
+                    urlConnection.setDoInput(true);
+                    urlConnection.setConnectTimeout(20000);
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.setRequestProperty("Content-Type", "application/json");
+                    urlConnection.setRequestProperty("charset", "utf-8");
+                    //urlConnection.setRequestProperty("Content-Length", "" + Integer.toString(message.getBytes().length));
 
-                            urlConnection.connect();
+                    urlConnection.connect();
 
-                            OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
-                            out.write(message);
-                            out.close();
+                    OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
+                    out.write(message);
+                    out.close();
 
-                            Log.i("SendAnswer", "Mensagem enviada");
+                    Log.i("SendAnswer", "Mensagem enviada");
 
-                            InputStream is;
+                    InputStream is;
 
-                            if (urlConnection.getResponseCode() == 200) {
+                    if (urlConnection.getResponseCode() == 200) {
 
-                                is = urlConnection.getInputStream();
+                        is = urlConnection.getInputStream();
 
     					/* obtem a resposta do pedido */
-                                int n = 1;
-                                while (n > 0) {
+                        int n = 1;
+                        while (n > 0) {
 
-                                    byte[] b = new byte[4096];
+                            byte[] b = new byte[4096];
 
-                                    n = is.read(b);
+                            n = is.read(b);
 
-                                    if (n > 0)
-                                        //ListProjects
-                                        output.append(new String(b, 0, n));
-                                }
-                            }
-                            ListProjects listProjects = gson.fromJson(output.toString(), ListProjects.class);
-                            Log.i("SendAnswer", output.toString());
-
-                            lista = listProjects.getListProject();
-
-                            Log.i("SIZE", String.valueOf(lista.size()));
-
-                            urlConnection.disconnect();
-
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                            if (n > 0)
+                                //ListProjects
+                                output.append(new String(b, 0, n));
                         }
-                        return null;
                     }
-                }).execute().get(3000, TimeUnit.MILLISECONDS);
+                    ListProjects listProjects = gson.fromJson(output.toString(), ListProjects.class);
+                    Log.i("SendAnswer", output.toString());
+
+                    lista = listProjects.getListProject();
+
+                    Log.i("SIZE", String.valueOf(lista.size()));
+
+                    urlConnection.disconnect();
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        }).execute().get(10000, TimeUnit.MILLISECONDS);
 
 
 

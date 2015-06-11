@@ -24,8 +24,7 @@
         <RelativeLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="185dp"
-            android:layout_alignParentTop="true">
+            android:layout_height="185dp">
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -41,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Neuza Fonte"
-                android:id="@+id/textView2"
+                android:id="@+id/userNameProj"
                 android:layout_gravity="left|top"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="90dp" />
@@ -51,27 +50,48 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:text="Aluno, categoria"
-                android:id="@+id/textView3"
+                android:id="@+id/categoria"
                 android:layout_gravity="right|top"
                 android:layout_alignBottom="@+id/imageButton5"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/nViewsProj"
+                android:layout_alignBottom="@+id/userNameProj"
+                android:layout_toRightOf="@+id/userNameProj"
+                android:layout_toEndOf="@+id/userNameProj"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="32dp" />
 
         </RelativeLayout>
 
 
-        <LinearLayout
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="498dp"
-            android:id="@+id/projectList"
-            android:nestedScrollingEnabled="true"
-            android:baselineAligned="false"
-            android:gravity="bottom|center_horizontal"></LinearLayout>
-
 
     </FrameLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="185dp"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/gallery_layout"
+            android:gravity="fill_horizontal|center">
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
 
 
 </RelativeLayout>

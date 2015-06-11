@@ -62,13 +62,13 @@ public class TabMaisVistos extends Fragment {
                 ImageItem item = (ImageItem) parent.getItemAtPosition(position);
                 //Create intent
                 Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                intent.putExtra("projID", item.getProjectID());
                 intent.putExtra("title", item.getTitle());
-                intent.putExtra("image", item.getImage());
-                intent.putExtra("date", item.getDate());
-                intent.putExtra("views", item.getViews());
                 intent.putExtra("user", item.getUser());
+                intent.putExtra("cat", item.getProjectCat());
+                intent.putExtra("descrp", item.getProjectDescrp());
+                intent.putExtra("views", item.getViews());
 
-                Log.i("LOG1",intent.getStringExtra("title"));
 
                 //Start details activity
                 startActivity(intent);
@@ -88,11 +88,12 @@ public class TabMaisVistos extends Fragment {
 
         for (int i = 0; i < lista.size(); i++) {
             Project proj = lista.get(i);
+            proj.getCourseName();
             Log.i("SIZE", proj.getName());
             byte[] decodedString = Base64.decode(proj.getCapeImage(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),0,String.valueOf(proj.getOwnerID()),proj.getProjectID()));
+            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),String.valueOf(proj.getOwnerID()),proj.getProjectID(),proj.getCourseName(),proj.getDescription()));
         }
         return imageItems;
     }
@@ -175,7 +176,7 @@ public class TabMaisVistos extends Fragment {
                 }
                 return null;
             }
-        }).execute().get(3000, TimeUnit.MILLISECONDS);
+        }).execute().get(10000, TimeUnit.MILLISECONDS);
 
 
 
