@@ -42,7 +42,8 @@ import addProject.LoadProjectCamera;
 import login.OauthActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity  {
 
 
     ViewPager pager;
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                                     intent.putExtra("profileID","self");
                             } else if (drawerItem.getIdentifier() == 18) {
                                 String token = sp.getString("ua_access_token", "Not Found");
-                                if (token == "Not Found") {
+                                if (token.equals("Not Found")) {
                                     intent = new Intent(MainActivity.this, OauthActivity.class);
                                 }
                                 boolean isLogin = sp.getBoolean(USER_IS_LOGGEDIN, false);
@@ -146,36 +147,12 @@ public class MainActivity extends AppCompatActivity {
 
 
             String fullname = sp.getString("Nome","Not Found");
-            if((fullname == "Not Found")) {
-               /* try {
-                    getUAInfo("name");
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
-                finish();
-                startActivity(getIntent());*/
-            }
+
 
             String email = sp.getString("Email","Not Found");
-            if(email == "Not Found") {
-                /*try {
-                    getUAInfo("uu");
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
-                finish();
-                startActivity(getIntent());*/
-            }
+
             String photo = sp.getString("Foto","Not Found");
-            if(photo == "Not Found") {
-                /*try {
-                    getUAInfo("student_info");
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
-                finish();
-                startActivity(getIntent());*/
-            }
+
 
             // decode user image
             byte[] decodedString = Base64.decode(photo, Base64.DEFAULT);
@@ -246,12 +223,9 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.options_menu, menu);
 
         // Associate searchable configuration with the SearchView
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         return true;
     }

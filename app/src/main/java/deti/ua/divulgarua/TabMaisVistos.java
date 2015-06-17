@@ -5,8 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,15 +38,16 @@ import webentities.RequestListProjects;
 /**
  * Created by hp1 on 21-01-2015.
  */
-public class TabMaisVistos extends Fragment {
+public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private GridView gridView;
+    private SwipeRefreshLayout mSwipeLayout;
     private GridViewAdapter gridAdapter;
-    static List<Project> lista = new ArrayList<Project>();
+    static List<Project> lista = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab_recentes,container,false);
+        View v = inflater.inflate(R.layout.tab_maisvistos,container,false);
 
         gridView = (GridView) v.findViewById(R.id.gridView);
 
@@ -54,8 +57,16 @@ public class TabMaisVistos extends Fragment {
             e.printStackTrace();
         }
 
+        Log.i("", "HEY");
+
         gridAdapter = new GridViewAdapter(getActivity(), R.layout.grid_item_layout, getData());
         gridView.setAdapter(gridAdapter);
+        Log.i("", "DONE");
+        mSwipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe_container);
+        mSwipeLayout.setOnRefreshListener(this);
+        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light, android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -97,6 +108,25 @@ public class TabMaisVistos extends Fragment {
         }
         return imageItems;
     }
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("", "'SUP");
+                gridAdapter.clear();
+                try {
+                    getListProjects();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                gridAdapter.addAll(getData());
+                mSwipeLayout.setRefreshing(false);
+            }
+        }, 5000);
+    }
+
 
     private void getListProjects () throws Exception {
 

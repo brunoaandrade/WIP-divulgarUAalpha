@@ -15,12 +15,16 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
 
     private Context context;
     private int layoutResourceId;
-    private ArrayList<ImageItem> data = new ArrayList<ImageItem>();
+    private ArrayList<ImageItem> data = new ArrayList<>();
 
     public GridViewAdapter(Context context, int layoutResourceId, ArrayList<ImageItem> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
+        this.data = data;
+    }
+
+    public void setData(ArrayList<ImageItem> data) {
         this.data = data;
     }
 
