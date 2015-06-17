@@ -73,8 +73,8 @@ public class ImageItem {
         this.date = date;
     }
 
-    public int getViews() {
-        return views;
+    public String getViews() {
+        return String.valueOf(views);
     }
 
     public void setViews(int views) {

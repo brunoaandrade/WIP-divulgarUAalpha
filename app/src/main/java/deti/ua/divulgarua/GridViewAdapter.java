@@ -39,6 +39,7 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
             holder = new ViewHolder();
             holder.imageTitle = (TextView) row.findViewById(R.id.text);
             holder.imageUser = (TextView) row.findViewById(R.id.subtext);
+            holder.imageViews = (TextView) row.findViewById(R.id.views);
             holder.image = (ImageView) row.findViewById(R.id.image);
             row.setTag(holder);
         } else {
@@ -56,6 +57,7 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
     static class ViewHolder {
         TextView imageUser;
         TextView imageTitle;
+        TextView imageViews;
         ImageView image;
     }
 }

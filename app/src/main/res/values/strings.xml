@@ -15,8 +15,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_search">Procurar</string>
-    <string name="search_hint">search...</string>
+    <string name="action_search">Pesquisar</string>
+    <string name="search_hint">pesquisar...</string>
 
 
     <string name="action_settings">Settings</string>
@@ -28,7 +28,7 @@
 
     <string name="title_activity_about">Acerca de</string>
     <string name="title_activity_help">Ajuda</string>
-    <string name="title_activity_search_results">SearchResultsActivity</string>
+    <string name="title_activity_search_results">Pesquisa</string>
 	
 	
 	<string name="title_activity_load_project">LoadProject</string>

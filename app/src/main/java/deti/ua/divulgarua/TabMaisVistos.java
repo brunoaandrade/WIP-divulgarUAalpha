@@ -27,6 +27,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -96,7 +97,7 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
      */
     private ArrayList<ImageItem> getData() {
         final ArrayList<ImageItem> imageItems = new ArrayList<>();
-
+        Collections.reverse(lista);
         for (int i = 0; i < lista.size(); i++) {
             Project proj = lista.get(i);
             proj.getCourseName();
@@ -104,7 +105,7 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
             byte[] decodedString = Base64.decode(proj.getCapeImage(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),String.valueOf(proj.getOwnerID()),proj.getProjectID(),proj.getCourseName(),proj.getDescription()));
+            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),proj.getAuthorName(),proj.getProjectID(),proj.getCourseName(),proj.getDescription()));
         }
         return imageItems;
     }
@@ -127,17 +128,16 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
         }, 5000);
     }
 
-
     private void getListProjects () throws Exception {
 
 
-        (new AsyncTask<Void, Void, Void>() {
+        (new AsyncTask<Void, Void, ListProjects>() {
             @Override
-            protected Void doInBackground(Void... params) {
+            protected ListProjects doInBackground(Void... params) {
                 Log.i("SendAnswer", "Estou aqui pah");
                 RequestListProjects list = new RequestListProjects(ProjectOrderType.VIEWS, "");
 
-
+                ListProjects listProjects = new ListProjects();
                 Gson gson = new GsonBuilder().create();
 
                 URL url;
@@ -190,10 +190,12 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
                                 output.append(new String(b, 0, n));
                         }
                     }
-                    ListProjects listProjects = gson.fromJson(output.toString(), ListProjects.class);
+                    listProjects = gson.fromJson(output.toString(), ListProjects.class);
                     Log.i("SendAnswer", output.toString());
 
-                    lista = listProjects.getListProject();
+                    if(listProjects != null){
+                        lista = listProjects.getListProject();
+                    }
 
                     Log.i("SIZE", String.valueOf(lista.size()));
 
@@ -204,10 +206,11 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                return null;
+                return listProjects;
             }
-        }).execute().get(10000, TimeUnit.MILLISECONDS);
 
+
+        }).execute().get(5000, TimeUnit.MILLISECONDS);
 
 
     }

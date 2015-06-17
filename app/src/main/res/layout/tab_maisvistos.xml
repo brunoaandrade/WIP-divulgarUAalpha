@@ -15,7 +15,6 @@
 
 
 
-
         <GridView
             android:id="@+id/gridView"
             android:layout_width="match_parent"
@@ -23,20 +22,9 @@
             android:verticalSpacing="10dp"
             android:horizontalSpacing="10dp"
             android:stretchMode="columnWidth"
-            android:numColumns="2"
-            android:layout_marginTop="70dp"
-            android:layout_marginLeft="16px"
-            android:layout_marginRight="16px"
-            android:layout_marginBottom="25dp" />
+            android:numColumns="2" />
 
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>
-
-
-
-
-
-
-

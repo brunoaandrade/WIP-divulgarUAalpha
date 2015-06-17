@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,23 +80,22 @@ public class DetailsActivity extends AppCompatActivity {
         TextView cat = (TextView) findViewById(R.id.categoria);
         cat.setText(categoria);
 
-        TextView nnviews = (TextView) findViewById(R.id.nViewsProj);
-        nnviews.setText(views);
-
-
-
 
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.gallery_layout);
         TextView description = new TextView(this);
         description.setText(descrip);
 
-        layout.addView(description);
+        RelativeLayout.LayoutParams paramsDescr = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        paramsDescr.topMargin = 20;
+        paramsDescr.bottomMargin = 15;
+        layout.addView(description,paramsDescr);
 
         ImageView[] iv_album = new ImageView[lista.size()];
         TextView[] tv_album = new TextView[lista.size()];
         for (int i = 0; i < lista.size(); i++) {
             Image img = lista.get(i);
-            Log.i("IMAGE", img.getImageData());
+
             byte[] decodedString = Base64.decode(img.getImageData(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
@@ -109,13 +109,20 @@ public class DetailsActivity extends AppCompatActivity {
             iv_album[i].setImageBitmap(bitmap);
             iv_album[i].setId(i + 1);
             iv_album[i].setAdjustViewBounds(true);
+
             params2.topMargin = 5;
+            params2.leftMargin = 16;
+            params2.rightMargin = 16;
 
             tv_album[i] = new TextView(this);
             tv_album[i].setText(img.getDescription());
             tv_album[i].setId(i + 2);
-            params.topMargin = 10;
-
+            tv_album[i].setTextSize(14);
+            tv_album[i].setGravity(Gravity.CENTER);
+            params.topMargin = 20;
+            params.bottomMargin = 15;
+            params.leftMargin = 16;
+            params.rightMargin = 16;
 
             if (i > 0) {
                 params2.addRule(RelativeLayout.BELOW, tv_album[i - 1].getId());

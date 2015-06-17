@@ -57,18 +57,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="20dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
-                android:id="@+id/nViewsProj"
-                android:layout_alignBottom="@+id/userNameProj"
-                android:layout_toRightOf="@+id/userNameProj"
-                android:layout_toEndOf="@+id/userNameProj"
-                android:layout_marginLeft="25dp"
-                android:layout_marginStart="32dp" />
-
         </RelativeLayout>
 
 
