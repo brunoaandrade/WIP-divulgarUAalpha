@@ -34,6 +34,7 @@ import java.util.List;
 
 import deti.ua.divulgarua.R;
 import webentities.ListProjects;
+import webentities.ListUsers;
 import webentities.Project;
 import webentities.User;
 
@@ -57,7 +58,10 @@ public class Project_Additional_Information extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_project__additional__information, container, false);
 
-        new RetrieveFeedTask().execute();
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        int idOwner=Integer.parseInt(sp.getString("NMec",null));
+        User user=new User(idOwner);
+        new RetrieveFeedTask().execute(user);
         selectUsersButton = (TextView) rootView.findViewById(R.id.select_colours);
         selectUsersButton.setOnClickListener(new View.OnClickListener()
         {
@@ -190,18 +194,22 @@ public class Project_Additional_Information extends Fragment {
         selectUsersButton.setText(stringBuilder.toString());
     }
 
-    class RetrieveFeedTask extends AsyncTask<Void, Void, List<User>> {
 
-        protected List<User> doInBackground(Void... user) {
+
+    class RetrieveFeedTask extends AsyncTask<User, Void, List<User>> {
+
+        private Exception exception;
+
+        protected List<User> doInBackground(User... user) {
             Gson gson = new GsonBuilder().create();
-
-            String message = gson.toJson("");
+            String message = gson.toJson(user);
+            message = message.substring(1,message.length()-1);
 
             URL url;
-            HttpURLConnection urlConnection = null;
+            HttpURLConnection urlConnection;
             try {
                 StringBuilder output = new StringBuilder();
-                url = new URL("http://192.168.160.32:8080/cmAndroid/webresources/generic");
+                url = new URL("http://192.168.160.32:8080/cmAndroid/webresources/listUsers");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setDoOutput(true);
                 urlConnection.setDoInput(true);
@@ -227,10 +235,10 @@ public class Project_Additional_Information extends Fragment {
                     }
                 }
                 Log.d("Tag Name", output.toString());
-                ArrayList<User> prr = gson.fromJson(output.toString(), ArrayList.class);
+                ListUsers prr = gson.fromJson(output.toString(), ListUsers.class);
 
                 urlConnection.disconnect();
-                return prr;
+                return prr.getListUser();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
