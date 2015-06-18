@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;

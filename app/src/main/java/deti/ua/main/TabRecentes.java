@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.google.gson.Gson;
@@ -36,19 +37,19 @@ import webentities.Project;
 import webentities.ProjectOrderType;
 import webentities.RequestListProjects;
 
-/**
- * Created by hp1 on 21-01-2015.
- */
-public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
+/**
+ * Created by LuisAfonso on 13-05-2015.
+ */
+public class TabRecentes extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private GridView gridView;
     private SwipeRefreshLayout mSwipeLayout;
-    private GridViewAdapter gridAdapter;
+    private  GridViewAdapter gridAdapter;
     static List<Project> lista = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab_maisvistos,container,false);
+        View v = inflater.inflate(R.layout.tab_recentes,container,false);
 
         gridView = (GridView) v.findViewById(R.id.gridView);
 
@@ -58,18 +59,19 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
             e.printStackTrace();
         }
 
-        Log.i("", "HEY");
 
+        Log.i("", "'HEY");
         gridAdapter = new GridViewAdapter(getActivity(), R.layout.grid_item_layout, getData());
         gridView.setAdapter(gridAdapter);
-        Log.i("", "DONE");
+        Log.i("", "'DONE");
+
         mSwipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe_container);
         mSwipeLayout.setOnRefreshListener(this);
         mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light, android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 ImageItem item = (ImageItem) parent.getItemAtPosition(position);
                 //Create intent
@@ -79,7 +81,9 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
                 intent.putExtra("user", item.getUser());
                 intent.putExtra("cat", item.getProjectCat());
                 intent.putExtra("descrp", item.getProjectDescrp());
+                intent.putExtra("ownerID", item.getOwnerID());
                 intent.putExtra("views", item.getViews());
+
 
 
                 //Start details activity
@@ -100,16 +104,16 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
         Collections.reverse(lista);
         for (int i = 0; i < lista.size(); i++) {
             Project proj = lista.get(i);
-            proj.getCourseName();
+            proj.getProjectID();
             Log.i("SIZE", proj.getName());
+            Log.i("SIZE", String.valueOf(proj.getnViews()));
             byte[] decodedString = Base64.decode(proj.getCapeImage(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),proj.getAuthorName(),proj.getProjectID(),proj.getCourseName(),proj.getDescription()));
+            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),proj.getAuthorName(),proj.getProjectID(),proj.getCourseName(), proj.getDescription(),String.valueOf(proj.getOwnerID())));
         }
         return imageItems;
     }
-
     @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
@@ -135,7 +139,7 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
             @Override
             protected ListProjects doInBackground(Void... params) {
                 Log.i("SendAnswer", "Estou aqui pah");
-                RequestListProjects list = new RequestListProjects(ProjectOrderType.VIEWS, "");
+                RequestListProjects list = new RequestListProjects(ProjectOrderType.DATE, "");
 
                 ListProjects listProjects = new ListProjects();
                 Gson gson = new GsonBuilder().create();
@@ -213,7 +217,9 @@ public class TabMaisVistos extends Fragment implements SwipeRefreshLayout.OnRefr
         }).execute().get(5000, TimeUnit.MILLISECONDS);
 
 
+
     }
+
 
 
 }

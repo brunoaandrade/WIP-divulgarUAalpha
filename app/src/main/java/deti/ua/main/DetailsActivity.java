@@ -1,12 +1,14 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -48,10 +50,14 @@ public class DetailsActivity extends AppCompatActivity {
     static int projectID;
     static List<Image> lista = new ArrayList<>();
 
+    static SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_activity);
+
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
 
         FrameLayout frame = (FrameLayout) findViewById(R.id.frame_container);
         Bundle extras = getIntent().getExtras();
@@ -66,6 +72,7 @@ public class DetailsActivity extends AppCompatActivity {
         String categoria = getIntent().getStringExtra("cat");
         String descrip = getIntent().getStringExtra("descrp");
         String views = getIntent().getStringExtra("views");
+        String ownerID = getIntent().getStringExtra("ownerID");
 
         try {
             getInfoProject();
@@ -83,6 +90,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.gallery_layout);
         TextView description = new TextView(this);
+        description.setTextSize(25);
+        description.setGravity(Gravity.CENTER);
         description.setText(descrip);
 
         RelativeLayout.LayoutParams paramsDescr = new RelativeLayout.LayoutParams(
@@ -110,19 +119,27 @@ public class DetailsActivity extends AppCompatActivity {
             iv_album[i].setId(i + 1);
             iv_album[i].setAdjustViewBounds(true);
 
-            params2.topMargin = 5;
+            if(i == 0){
+                params2.topMargin = 120;
+            }else {
+
+                params2.topMargin = 5;
+            }
+
             params2.leftMargin = 16;
             params2.rightMargin = 16;
 
             tv_album[i] = new TextView(this);
             tv_album[i].setText(img.getDescription());
             tv_album[i].setId(i + 2);
-            tv_album[i].setTextSize(14);
+            tv_album[i].setTextSize(25);
             tv_album[i].setGravity(Gravity.CENTER);
             params.topMargin = 20;
             params.bottomMargin = 15;
             params.leftMargin = 16;
             params.rightMargin = 16;
+            params.addRule(RelativeLayout.CENTER_IN_PARENT);
+
 
             if (i > 0) {
                 params2.addRule(RelativeLayout.BELOW, tv_album[i - 1].getId());
@@ -146,7 +163,11 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         if (savedInstanceState == null) {
-            createButton();
+
+            String nMec = sp.getString("NMec","Not Found");
+            if(ownerID.equals(nMec)) {
+                createButton();
+            }
             projectName=title;
         }
     }

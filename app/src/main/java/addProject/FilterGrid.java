@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import deti.ua.divulgarua.R;
+import deti.ua.main.R;
 
 
 public class FilterGrid extends ArrayAdapter<FilterItem> {

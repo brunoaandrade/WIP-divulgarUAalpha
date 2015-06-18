@@ -41,13 +41,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 
-import deti.ua.divulgarua.MainActivity;
-import deti.ua.divulgarua.R;
+import deti.ua.main.MainActivity;
+import deti.ua.main.R;
 
 /**
  * Created by bruno on 30/05/2015.

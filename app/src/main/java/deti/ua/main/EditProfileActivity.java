@@ -1,15 +1,20 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -53,16 +58,39 @@ public class EditProfileActivity extends AppCompatActivity {
         String photo = sp.getString("Foto", "Not Found");
         ImageView profilePic = (ImageView)findViewById(R.id.profilePicture);
         byte[] decodedString = Base64.decode(photo, Base64.DEFAULT);
-        Bitmap image = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        profilePic.setImageBitmap(image);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-        String studys = sp.getString("Curso","Not Found");
 
+        Bitmap circleBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Log.i("SIZE", String.valueOf(bitmap.getWidth()));
+        Log.i("SIZE", String.valueOf(bitmap.getHeight()));
+
+
+        BitmapShader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        Paint paint = new Paint();
+        paint.setShader(shader);
+
+
+        Canvas c = new Canvas(circleBitmap);
+        c.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2, bitmap.getWidth()/2, paint);
+
+
+        profilePic.setImageBitmap(circleBitmap);
+
+        String studys = sp.getString("Curso", "Not Found");
         editStudys.setText(studys);
 
         String ano = sp.getString("AnoCurricular", "Not Found");
-
         edtYear.setText(ano);
+
+        String idade = sp.getString("Idade", "Not Found");
+        editAge.setText(idade);
+
+        String localidade = sp.getString("Localidade", "Not Found");
+        editLocation.setText(localidade);
+
+        String interesses = sp.getString("Interesses", "Not Found");
+        editAge.setText(interesses);
 
         EditText [] eT = {editName,editAge, editLocation,editInterests};
 

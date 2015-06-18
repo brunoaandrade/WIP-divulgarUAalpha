@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -37,7 +37,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {
-            TabCategorias tab3 = new TabCategorias();
+            TabMaisVistos tab3 = new TabMaisVistos();
             return tab3;
         }
 

@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.app.Activity;
 import android.content.Context;
@@ -50,6 +50,7 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
         ImageItem item = data.get(position);
         holder.imageTitle.setText(item.getTitle());
         holder.imageUser.setText(item.getUser());
+        holder.imageViews.setText(item.getViews());
         holder.image.setImageBitmap(item.getImage());
         return row;
     }

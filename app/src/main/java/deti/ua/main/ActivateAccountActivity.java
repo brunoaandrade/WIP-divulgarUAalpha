@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import login.IdentityUAApi;
+import authentication.IdentityUAApi;
 import webentities.UserCourse;
 
 

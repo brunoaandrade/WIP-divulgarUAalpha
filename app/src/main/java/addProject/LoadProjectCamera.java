@@ -3,14 +3,10 @@ package addProject;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ClipData;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,21 +15,14 @@ import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.VideoView;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import deti.ua.divulgarua.R;
-import webentities.Project;
+import deti.ua.main.R;
 
 
 public class LoadProjectCamera extends Activity {

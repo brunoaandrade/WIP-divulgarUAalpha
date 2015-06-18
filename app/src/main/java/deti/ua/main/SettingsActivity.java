@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.annotation.TargetApi;
 import android.content.Context;

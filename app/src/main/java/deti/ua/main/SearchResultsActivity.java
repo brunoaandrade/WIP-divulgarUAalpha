@@ -1,6 +1,7 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,10 +9,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -86,8 +89,14 @@ public class SearchResultsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search_results, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
         return true;
     }
 
@@ -151,7 +160,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             byte[] decodedString = Base64.decode(proj.getCapeImage(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),String.valueOf(proj.getOwnerID()),proj.getProjectID(),proj.getCourseName(),proj.getDescription()));
+            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),proj.getAuthorName(),proj.getProjectID(),proj.getCourseName(), proj.getDescription(),String.valueOf(proj.getOwnerID())));
         }
         return imageItems;
     }

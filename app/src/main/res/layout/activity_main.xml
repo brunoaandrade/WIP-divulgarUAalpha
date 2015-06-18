@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <deti.ua.divulgarua.SlidingTabLayout
+        <deti.ua.main.SlidingTabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

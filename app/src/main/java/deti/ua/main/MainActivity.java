@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -39,7 +39,7 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import addProject.LoadProjectCamera;
-import login.OauthActivity;
+import authentication.OauthActivity;
 
 
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         sp = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isLogin = sp.getBoolean(USER_IS_LOGGEDIN, false);//get value of last login status
+        boolean isLogin = sp.getBoolean(USER_IS_LOGGEDIN, false);//get value of last authentication status
 
 
         // Handle Toolbar

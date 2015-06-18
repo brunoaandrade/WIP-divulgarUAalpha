@@ -3,15 +3,15 @@
 
     <!-- These settings headers are only used on tablets. -->
 
-    <header android:fragment="deti.ua.divulgarua.SettingsActivity$GeneralPreferenceFragment"
+    <header android:fragment="deti.ua.main.SettingsActivity$GeneralPreferenceFragment"
         android:title="@string/pref_header_general" />
 
     <header
-        android:fragment="deti.ua.divulgarua.SettingsActivity$NotificationPreferenceFragment"
+        android:fragment="deti.ua.main.SettingsActivity$NotificationPreferenceFragment"
         android:title="@string/pref_header_notifications" />
 
     <header
-        android:fragment="deti.ua.divulgarua.SettingsActivity$DataSyncPreferenceFragment"
+        android:fragment="deti.ua.main.SettingsActivity$DataSyncPreferenceFragment"
         android:title="@string/pref_header_data_sync" />
 
 </preference-headers>

@@ -17,9 +17,6 @@ import android.opengl.GLException;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,8 +24,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,7 +34,7 @@ import java.util.ArrayList;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import deti.ua.divulgarua.R;
+import deti.ua.main.R;
 
 
 public class PhotoFilter extends Activity  implements GLSurfaceView.Renderer {

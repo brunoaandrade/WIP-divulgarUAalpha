@@ -1,4 +1,4 @@
-package login;
+package authentication;
 
 import org.scribe.builder.api.DefaultApi10a;
 import org.scribe.model.Token;

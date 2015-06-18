@@ -21,7 +21,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 
-import deti.ua.divulgarua.R;
+import deti.ua.main.R;
 
 import java.util.*;
 

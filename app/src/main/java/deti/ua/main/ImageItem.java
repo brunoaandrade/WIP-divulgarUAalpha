@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 /**
  * Created by LuisAfonso on 13-05-2015.
@@ -16,8 +16,9 @@ public class ImageItem {
     private int projectID;
     private String projectCat;
     private String projectDescrp;
+    private String ownerID;
 
-    public ImageItem(Bitmap image, String title, Date date, int views, String user, int projectID, String projectCat, String projectDescrp) {
+    public ImageItem(Bitmap image, String title, Date date, int views, String user, int projectID, String projectCat, String projectDescrp, String ownerID) {
         super();
         this.image = image;
         this.title = title;
@@ -27,6 +28,11 @@ public class ImageItem {
         this.projectID = projectID;
         this.projectCat = projectCat;
         this.projectDescrp = projectDescrp;
+        this.ownerID = ownerID;
+    }
+
+    public String getOwnerID() {
+        return ownerID;
     }
 
     public String getProjectDescrp() {

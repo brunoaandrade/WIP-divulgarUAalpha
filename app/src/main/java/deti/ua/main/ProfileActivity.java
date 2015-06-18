@@ -1,4 +1,4 @@
-package deti.ua.divulgarua;
+package deti.ua.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -77,8 +77,8 @@ public class ProfileActivity extends AppCompatActivity {
             TextView yStudies = (TextView) findViewById(R.id.profile_yearStudies);
             Log.i("E", fullname);
             name.setText(fullname);
-            yStudies.setText(sp.getString("Ano", "Not Found"));
-            Log.i("E", sp.getString("NMec","Not Found"));
+            yStudies.setText("Ano " + sp.getString("AnoCurricular", "year not found"));
+            Log.i("E", sp.getString("NMec", "Not Found"));
             nmec = Integer.parseInt(sp.getString("NMec", "-1"));
 
             if(fullname != null) {
@@ -198,7 +198,7 @@ public class ProfileActivity extends AppCompatActivity {
             byte[] decodedString = Base64.decode(proj.getCapeImage(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),String.valueOf(proj.getOwnerID()),proj.getProjectID(),proj.getCourseName(),proj.getDescription()));
+            imageItems.add(new ImageItem(bitmap, proj.getName(),proj.getCreatedDate(),proj.getnViews(),proj.getAuthorName(),proj.getProjectID(),proj.getCourseName(), proj.getDescription(),String.valueOf(proj.getOwnerID())));
         }
         return imageItems;
     }

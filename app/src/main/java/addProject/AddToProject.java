@@ -34,7 +34,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import deti.ua.divulgarua.R;
+import deti.ua.main.R;
 import webentities.ListProjects;
 import webentities.Project;
 import webentities.User;

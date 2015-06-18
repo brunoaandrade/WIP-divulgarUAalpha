@@ -1,4 +1,4 @@
-package login;
+package authentication;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,8 +24,8 @@ import org.scribe.model.Token;
 import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 
-import deti.ua.divulgarua.ActivateAccountActivity;
-import deti.ua.divulgarua.R;
+import deti.ua.main.ActivateAccountActivity;
+import deti.ua.main.R;
 
 public class OauthActivity extends Activity {
 
