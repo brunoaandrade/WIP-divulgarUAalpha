@@ -40,7 +40,8 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import addProject.LoadProjectCamera;
 import authentication.OauthActivity;
-
+import pt.mydomain.rabbittester.Constants;
+import pt.mydomain.rabbittester.RabbitService;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -60,6 +61,11 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Intent startIntent = new Intent(this, RabbitService.class);
+        startIntent.setAction(Constants.ACTION.STARTFOREGROUND_ACTION);
+        startService(startIntent);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         super.onCreate(savedInstanceState);
 

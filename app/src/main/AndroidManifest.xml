@@ -156,6 +156,11 @@
             android:name="addProject.ServiceUploadPhoto"
             android:exported="false" >
         </service>
+        <service
+            android:name="pt.mydomain.rabbittester.RabbitService"
+            android:exported="false" >
+        </service>
+
     </application>
 
 </manifest>
