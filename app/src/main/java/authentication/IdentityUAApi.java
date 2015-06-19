@@ -8,10 +8,6 @@ import org.scribe.model.Token;
  */
 public class IdentityUAApi  extends DefaultApi10a {
 
-    /*private static final String AUTHORIZE_URL = "https://api.twitter.com/oauth/authorize?oauth_token=%s";
-    private static final String REQUEST_TOKEN_RESOURCE = "api.twitter.com/oauth/request_token";
-    private static final String ACCESS_TOKEN_RESOURCE = "api.twitter.com/oauth/access_token";*/
-
     public static final String REQUEST_TOKEN_RESOURCE 		= "http://identity.ua.pt/oauth/request_token";
     public static final String ACCESS_TOKEN_RESOURCE 		= "http://identity.ua.pt/oauth/access_token";
     public static final String AUTHORIZE_URL 	= "http://identity.ua.pt/oauth/authorize?oauth_token=%s";
